@@ -1,0 +1,52 @@
+\def\headingtype{\bf \small}
+\def\openspacelogo{\href{https://www.spaceisopen.com/}{\includegraphics[height=25mm, clip]{caratula/logo}}}
+
+\loadgeometry{titlepage}
+\begin{titlepage}
+	\centering
+	\begin{tikzpicture}[remember picture, overlay]
+	\coordinate (top_right) at 
+	([xshift=-2.5cm, yshift=-2.5cm]current page.north east);
+	\coordinate (top_left) at 
+	([xshift=2.3cm, yshift=-2.3cm]current page.north west);
+	\coordinate (bottom_right) at 
+	([xshift=-1.8cm, yshift=1.8cm]current page.south east);
+	\node[inner sep=0, anchor=north west] at (top_left) {};
+	\node[yshift = 0.3cm, inner sep=0, anchor=north east] at (top_right) {
+	\begin{tabular}{r}
+	 {\headingtype \emph{}} \\ [-2pt]
+		{\headingtype \carrera} \\[-2pt]
+		{\headingtype \emph{\empresa}} \\[-2pt]	
+	\end{tabular}
+	};
+	\draw[double, line width = 0.5pt, color = \colorborde] (top_left) rectangle (bottom_right);
+	\end{tikzpicture}\par
+	\vfill
+	{\centering
+		\includegraphics[width=4cm]{fig/SM.png}\par
+	}
+	{\Huge \bf  \tema \par}
+	\vspace{2.0cm}
+	{\LARGE \bf \titulo \par}
+	\vspace{2.0cm}
+	\begin{tabular}{c}
+	\autor~
+	\end{tabular}\par
+	
+	\vspace{1cm}
+	
+\begin{tabular}{c}
+    %  \textbf{Resumen} \\ [10pt]
+\end{tabular}\par
+\begin{changemargin}{2cm}{2cm} % este comando es personalizado. ver preambulo
+{ \resumen\par }
+\end{changemargin}\par
+
+	\vspace{2.0cm}
+	{\Large \fecha \par}
+	\vfill
+	\openspacelogo{}
+\end{titlepage}
+\loadgeometry{main}
+
+ %El siguiente documento tiene la finalidad de plasmar el grado de avance del proyecto haciendo un enfoque en particular en la división de las tareas para llevar a cabo en la etapa de factitibilidad y en detalle de los aspectos más relevantes para el desarrollo del proyecto, en función de esto organizamos equipos de trabajo, para abordar cada una de las tareas.

@@ -1,0 +1,63 @@
+%% DIFFERENTIAL OPERATOR
+\makeatletter
+\providecommand*{\diff}%
+{\@ifnextchar^{\DIfF}{\DIfF^{}}}
+\def\DIfF^#1{%
+	\mathop{\mathrm{\mathstrut d}}%
+	\nolimits^{#1}\gobblespace}
+\def\gobblespace{%
+	\futurelet\diffarg\opspace}
+\def\opspace{%
+	\let\DiffSpace\!%
+	\ifx\diffarg(%
+	\let\DiffSpace\relax
+	\else
+	\ifx\diffarg[%
+	\let\DiffSpace\relax
+	\else
+	\ifx\diffarg\{%
+	\let\DiffSpace\relax
+	\fi\fi\fi\DiffSpace}
+	
+
+\def\Matlab{\(\textrm{\textsc{Matlab}}\)}%^\textrm{®}
+
+\def\metano{\ensuremath{\mathrm{CH}_4}}
+\newcommand{\oxygen}{\ensuremath{\textrm{O}_2}}
+\newcommand{\dioxcarb}{\ensuremath{\textrm{CO}_2}}
+\newcommand{\dioxsulf}{\ensuremath{\textrm{SO}_2}}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\sat}{{\tiny\textrm{sat}}}
+\newcommand{\SOx}{\ensuremath{\textrm{SO}_x}}
+\newcommand{\NOx}{\ensuremath{\textrm{NO}_x}}
+
+\def\micro{\ensuremath{\mu}}
+\def\px{\ensuremath{\mathrm{px}}}
+\def\pixrad{\ensuremath{I_{\px}}}
+\def\radiance{\ensuremath{I_R}}
+\def\radianceunits{\ensuremath{\text{W}\,\text{m}^{-2}\,\text{sr}^{-1}}}
+\def\pixradunits{\ensuremath{\text{W}\,\text{m}^{-2}\,\text{sr}^{-1}\,\micro \text{m}^{-1} }}
+
+\def\LEO{\ensuremath{{\mathrm{\tiny LEO}}}}
+\def\earth{\ensuremath{\mathrm{tierra}}}
+\def\sensor{\ensuremath{{\! \mathrm{\footnotesize sens}}}}
+
+
+
+\def\simulationGraphic{
+\begin{figure}[htb!]
+\centering
+\pgfplotsset{colormap/jet}
+	\begin{tikzpicture}	
+		\begin{axis}[view={30}{40}, width=0.7\textwidth,y dir=reverse,
+		title={Radiancia de píxel a 100km de altura},xlabel={Longitud de onda [\micro m]},
+		ylabel={Concentración de \metano [ppm]}, zlabel={\pixrad~  [\pixradunits]}]
+		\addplot3 [surf, mesh/rows=7, shader=faceted interp]
+		table[x=wl, y=ch, z=ir, col sep=comma] {plots/ch4ppmSurf-M7.csv};
+		\addplot3 [mesh, black, mesh/rows=7, shader=faceted interp]		table[x=wl, y=ch, z=ir, col sep=comma] {plots/ch4ppmSurf-M7.csv};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Grafico  de radiancia de píxel en función de longitud de onda y concentración de \metano.}
+	\label{fig:ch4IrrVsPpm}
+\end{figure}
+}
